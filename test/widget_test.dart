@@ -11,20 +11,15 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:schedule_resolver/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  testWidgets('Schedule Resolver App smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(const ScheduleResolverApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Verify that our app starts with the correct title.
+    expect(find.text('Schedule Resolver'), findsOneWidget);
+    expect(find.text('No tasks yet. Add one!'), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Verify the floating action button exists
+    expect(find.byIcon(Icons.add), findsOneWidget);
   });
 }
